@@ -137,4 +137,4 @@ transIndexObj = {
 
 ### 使用参考
 
-![参考](media\参考.gif)
+![参考](./media/参考.gif)
