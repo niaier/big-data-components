@@ -43,7 +43,6 @@ export default {
 			for (let index = 0; index < 10000; index++) {
 				arr.push({
 					id: index,
-					checkStatus: false,
 					ppp: 'desc' + index,
 					// transfer: 'left'
 					disable: index % 2 === 0 ? true : false

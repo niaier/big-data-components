@@ -137,4 +137,6 @@ transIndexObj = {
 
 ### 使用参考
 
+![cankao](./media/cankao.png)
+
 ![参考](https://github.com/niaier/big-data-components/edit/master/media/参考.gif)

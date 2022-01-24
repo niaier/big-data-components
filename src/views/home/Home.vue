@@ -7,6 +7,11 @@
 				height: '200px',
 				width: '400px',
 			}"
+			:transIndexObj="{
+				transIndex: 'disable',
+				leftVal: true,
+				rightVal: false,
+			}"
 		></bigDataTransfer>
 	</div>
 </template>
@@ -36,9 +41,8 @@ export default {
 			for (let index = 0; index < 1000; index++) {
 				arr.push({
 					id: index,
-					// checkStatus: false,
+					disable: index % 2 == 0 ? true : false,
 					description: 'desc' + index,
-					transfer: 'left'
 				})
 			}
 			this.allData = arr

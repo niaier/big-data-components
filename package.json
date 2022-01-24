@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^1.7.8",
-    "big-data-transfer": "^1.0.1",
+    "big-data-transfer": "^1.0.5",
     "big-data-transfer1": "file:big-data-transfer",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",

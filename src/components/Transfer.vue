@@ -37,6 +37,7 @@
 						v-model="leftSearchKeyword"
 						:style="{ width: '100%' }"
 						placeholder="搜索关键字"
+						@keyup.enter="search('left')"
 					/>
 					<span
 						class="iconfont icon-sousuo"
@@ -46,6 +47,7 @@
 							right: '10px',
 							top: '5px',
 							'font-size': '14px',
+							cursor: 'pointer',
 						}"
 					></span>
 				</div>
@@ -153,6 +155,7 @@
 						v-model="rightSearchKeyword"
 						:style="{ width: '100%' }"
 						placeholder="搜索关键字"
+						@keyup.enter="search('right')"
 					/>
 					<span
 						class="iconfont icon-sousuo"
@@ -162,6 +165,7 @@
 							right: '10px',
 							top: '5px',
 							'font-size': '14px',
+							cursor: 'pointer',
 						}"
 					></span>
 				</div>
@@ -440,32 +444,31 @@ export default {
 
 			}
 			else if (!isLeftEmpty) {
-				let status
+
 				const isAll = this.leftTotalData.every((item) => {
 					return item.checkStatus == true
 				})
 				const isAllNot = this.leftTotalData.every((item) => {
 					return item.checkStatus == false
 				})
+				// 全选
 				if (isAll) {
-					status = 0
+
 					this.leftSelectAllStatus = true
 					this.leftHalfCheckStatus = false
 
 				}
-				if (isAllNot) {
-					status = 1
+				// 全不选
+				else if (isAllNot) {
+
 					this.leftSelectAllStatus = false
 					this.leftHalfCheckStatus = false
 
 				}
-				if (!isAll && !isAllNot) {
-					status = -1
+				else if (!isAll && !isAllNot) {
 					this.leftHalfCheckStatus = true
 				}
-				if (status == -1) {
-					this.leftHalfCheckStatus = true
-				}
+
 
 			}
 
@@ -603,13 +606,15 @@ export default {
 		allData: {
 			immediate: true,
 			handler (value) {
+				value.forEach((item) => {
+					item.checkStatus = false
+				})
 				this.totalData = JSON.parse(JSON.stringify(value))
 			}
 		},
 		styleObject: {
 			immediate: true,
 			handler (value) {
-				// console.log(Math.ceil(parseInt(value.height) / this.itemHeight) + 1);
 				this.sliceLength = Math.ceil(parseInt(value.height) / this.itemHeight) + 1
 			}
 		},
